@@ -1,4 +1,4 @@
-export const PokeCard = ({pokemonData, updateTime}) => {
+export const PokeCard = ({pokemonData, updateTime, onNext, onSaveData}) => {
   return (
     <div className="card ps-4 pe-4 text-bg-dark  mb-3" style={{width: 640}}>
       <div className="card-header bg-transparent border-primary text-center fs-3">
@@ -50,10 +50,10 @@ export const PokeCard = ({pokemonData, updateTime}) => {
           </div>
         </div>
         <div className="container d-flex justify-content-evenly mt-2 mb-2">
-          <button type="button" className="btn btn-primary">
+          <button onClick={onNext} type="button" className="btn btn-primary">
             Next pokemon
           </button>
-          <button type="button" className="btn btn-success">
+          <button onClick={() => onSaveData(pokemonData)} type="button" className="btn btn-success">
             Save pokemon
           </button>
         </div>

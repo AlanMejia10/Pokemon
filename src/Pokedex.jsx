@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {useFetch} from "../Hooks/useFetch";
 import {PokeCard} from "../Components/PokeCard";
+import {saveToDatabase} from "../Helpers/getPokemonData";
 
 import "./style.css";
 
@@ -25,13 +26,23 @@ export const Pokedex = () => {
     return Math.floor(Math.random() * allPokemons);
   };
 
+  const onNext = () => {
+    const randomId = generateRandomId();
+    setId(randomId);
+  }
+
+  const onSaveData = (currentPokemon) => {
+    saveToDatabase(currentPokemon);
+  }
+
   return (
     <>
       <div
         className="d-flex poke-container justify-content-center 
           align-items-center"
       >
-        <PokeCard pokemonData={pokemonData} updateTime={time / 1000} />
+        <PokeCard pokemonData={pokemonData} updateTime={time / 1000}
+          onNext={onNext} onSaveData={onSaveData} />
       </div>
     </>
   );

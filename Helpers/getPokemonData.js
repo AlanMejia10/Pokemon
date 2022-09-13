@@ -19,3 +19,11 @@ export const getPokemonData = async id => {
 
   return pokedata;
 };
+
+export const saveToDatabase = async (pokemonInfo) => {
+  const postStatus = await axios.post('http://localhost:8080//api/users', {
+    name: pokemonInfo.name,
+  })
+
+  console.log(postStatus)
+}

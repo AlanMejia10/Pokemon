@@ -1,3 +1,5 @@
+import {Routes, Route, Link} from "react-router-dom";
+
 export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,14 +28,10 @@ export const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="#">
-                Show pokedex
-              </a>
+              <Link to="/" className="nav-link" aria-current="page">Pokemons</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Saved pokemons
-              </a>
+              <Link to="saved" className="nav-link" aria-current="page">Saved pokemons</Link>
             </li>
           </ul>
         </div>

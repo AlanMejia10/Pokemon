@@ -1,12 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Navbar } from "../Components/Navbar";
-import { Pokedex } from "./Pokedex";
+import {BrowserRouter} from "react-router-dom";
+import {Navbar} from "../Components/Navbar";
+import {AppRouter} from "../Router/AppRouter";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    {/* main component */}
-    <Navbar />
-    <Pokedex />
+    {/*the navbar must the inside the BrowserRouter to get the context*/}
+    <BrowserRouter>
+      <Navbar />
+      <AppRouter />
+    </BrowserRouter>
   </React.StrictMode>
 );
