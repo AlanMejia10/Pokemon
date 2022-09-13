@@ -1,0 +1,15 @@
+.poke-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.card {
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.2);
+}
+
+.poke-container{
+    background-image: url("/background3.png");
+    background-size: contain;
+    background-position: 950px;
+}
