@@ -1,6 +1,6 @@
 export const PokeCard = ({
   pokemonData,
-  updateTime = 0,
+  updateTime = null,
   onNext = null,
   onSaveData = null,
 }) => {
@@ -71,13 +71,15 @@ export const PokeCard = ({
             </button>
           </div>
         )}
-        <div className="container mt-1 mb-1">
-          <p className="card-text">
-            <small className="text-muted">
-              Updates automatically in {updateTime} seconds
-            </small>
-          </p>
-        </div>
+        {updateTime && (
+          <div className="container mt-1 mb-1">
+            <p className="card-text">
+              <small className="text-muted">
+                Updates automatically in {updateTime} seconds
+              </small>
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

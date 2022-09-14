@@ -10,7 +10,7 @@ import "./style.css";
 export const Pokedex = () => {
   const [id, setId] = useState(generateRandomId());
   const { pokemonData } = useFetch(id);
-  const time = 10000;
+  const time = 30000;
   const navigate = useNavigate();
 
   useEffect(() => {
