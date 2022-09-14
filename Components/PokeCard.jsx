@@ -1,13 +1,18 @@
-export const PokeCard = ({pokemonData, updateTime, onNext, onSaveData}) => {
+export const PokeCard = ({
+  pokemonData,
+  updateTime = 0,
+  onNext = null,
+  onSaveData = null,
+}) => {
   return (
-    <div className="card ps-4 pe-4 text-bg-dark  mb-3" style={{width: 640}}>
+    <div className="card ps-4 pe-4 text-bg-dark  mb-3" style={{ width: 640 }}>
       <div className="card-header bg-transparent border-primary text-center fs-3">
         {pokemonData.name}
       </div>
       <div className="row g-0 d-flex align-items-center text-center">
         <div className="col-md-4">
           <img
-            src={pokemonData.img}
+            src={pokemonData.img ? pokemonData.img : "/masterball.png"}
             className="img-fluid rounded-start"
             alt="Whoops! looks like there's no image for this pokemon"
           />
@@ -49,14 +54,23 @@ export const PokeCard = ({pokemonData, updateTime, onNext, onSaveData}) => {
             </div>
           </div>
         </div>
-        <div className="container d-flex justify-content-evenly mt-2 mb-2">
-          <button onClick={onNext} type="button" className="btn btn-primary">
-            Next pokemon
-          </button>
-          <button onClick={() => onSaveData(pokemonData)} type="button" className="btn btn-success">
-            Save pokemon
-          </button>
-        </div>
+        {onNext && onSaveData && (
+          <div className="container d-flex justify-content-evenly mt-2 mb-2">
+            <button onClick={onNext} type="button" className="btn btn-primary">
+              Next pokemon
+            </button>
+
+            <button
+              onClick={() => {
+                onSaveData(pokemonData);
+              }}
+              type="button"
+              className="btn btn-success"
+            >
+              Save pokemon
+            </button>
+          </div>
+        )}
         <div className="container mt-1 mb-1">
           <p className="card-text">
             <small className="text-muted">

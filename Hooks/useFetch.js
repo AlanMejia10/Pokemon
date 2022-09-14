@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { getPokemonData } from "../Helpers/getPokemonData";
+import {
+  getPokemonData,
+  getPokemonsFromDabase,
+} from "../Helpers/getPokemonData";
 
 export const useFetch = id => {
   const [pokemonData, setPokemonData] = useState({});
@@ -15,5 +18,22 @@ export const useFetch = id => {
 
   return {
     pokemonData,
+  };
+};
+
+export const useFetchDB = () => {
+  const [pokemons, setPokemons] = useState([]);
+
+  const getData = async () => {
+    const data = await getPokemonsFromDabase();
+    setPokemons(data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  return {
+    pokemons,
   };
 };

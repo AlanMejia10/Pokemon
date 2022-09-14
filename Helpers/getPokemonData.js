@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getPokemonData = async id => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-  const {data} = await axios.get(url);
+  const { data } = await axios.get(url);
 
   const abilities = data.abilities.map(e => e.ability.name);
   const types = data.types.map(e => e.type.name);
@@ -20,10 +20,17 @@ export const getPokemonData = async id => {
   return pokedata;
 };
 
-export const saveToDatabase = async (pokemonInfo) => {
-  const postStatus = await axios.post('http://localhost:8080//api/users', {
-    name: pokemonInfo.name,
-  })
+export const saveToDatabase = async pokemonInfo => {
+  const { data } = await axios({
+    method: "post",
+    url: "http://localhost:3000/api/pokemons",
+    data: pokemonInfo,
+  });
+  return data;
+};
 
-  console.log(postStatus)
-}
+export const getPokemonsFromDabase = async () => {
+  const backendEndPoint = `http://localhost:3000/api/pokemons`;
+  const { data } = await axios(backendEndPoint);
+  return data;
+};
